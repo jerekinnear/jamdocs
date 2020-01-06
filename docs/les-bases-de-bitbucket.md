@@ -5,8 +5,7 @@ date: 2020-01-03
 slug: bitbucket
 
 ---
-## **Créer un repository sur Bitbucket**![](https://lh4.googleusercontent.com/idMhKaSiLT1lUSfXL3e_JDK_fo_l08CU70lVMK_ccJluD6S_wNqL2MblrqppduVwjvg35u95zx4WWxb_FOwq8fG0oyNGkrNkb86QR3pDq-bIL8dDYn_3KPHSCHOFSgGjZf__fi8 =30x29)
-
+## **Créer un repository sur Bitbucket**
 Si vous voulez restreindre l’accès à certaines parties de vos sites Web en forçant un logon (mot de passe), c’est possible avec [Apache2](http://fr.wikipedia.org/wiki/Apache_HTTP_Server) en créant **un fichier .htaccess et un fichier contenant les utilisateurs autorisés et leurs mots de passe**.
 
 **Les fichiers .htaccess permettent plein de choses. Je ne m’intéresse ici qu’au contrôle d’accès à un dossier. Je vais définir dans .htaccess l’accès par un mot de passe.**
