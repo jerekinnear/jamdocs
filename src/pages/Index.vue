@@ -5,7 +5,7 @@
       <nav>
         <!-- To use other icons here, you need to import them in the Shortcut component -->
         <Shortcut link="/seo" text="SEO" icon="play-icon" />
-        <Shortcut link="/getting-started" text="GIT-BitBucket" icon="" />
+        <Shortcut link="/getting-started" text="GIT-BitBucket" icon="eye-icon" />
         <Shortcut link="/theme-configuration" text="CMS" icon="sliders-icon" />
         <Shortcut link="/getting-started" text="Hébérgement" icon="eye-icon" />
         <Shortcut link="/getting-started" text="Techno" icon="eye-icon" />
@@ -34,14 +34,14 @@ export default {
   },
   data() {
     return {
-      description: 'The ultimate static generated documentation theme for the JAM-stack'
+      description: 'Une documentation simple et efficace 🚀'
     }
   },
   metaInfo() {
     return {
       title: this.description,
       meta: [
-        { key: 'description', name: 'description', content: 'A theme for static site documentation based on Gridsome, ready to deploy to Netlify in one click.' }
+        { key: 'description', name: 'description', content: 'Grid - Netlify - Forestry' }
       ]
     }
   }
