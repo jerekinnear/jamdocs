@@ -9,8 +9,6 @@ slug: bitbucket
 
 Si vous voulez restreindre l’accès à certaines parties de vos sites Web en forçant un logon (mot de passe), c’est possible avec [Apache2](http://fr.wikipedia.org/wiki/Apache_HTTP_Server) en créant **un fichier .htaccess et un fichier contenant les utilisateurs autorisés et leurs mots de passe**.
 
-[![Logo Serveur Apache](http://www.webactus.net/wp-content/uploads/2009/06/apache_logo.png =200x178)](http://www.webactus.net/wp-content/uploads/2009/06/apache_logo.png)
-
 **Les fichiers .htaccess permettent plein de choses. Je ne m’intéresse ici qu’au contrôle d’accès à un dossier. Je vais définir dans .htaccess l’accès par un mot de passe.**
 
 Je me base sur le document « [Apache – Les fichiers .htaccess](http://www.commentcamarche.net/contents/apache/apacht.php3) » en licence [Creative Commons](http://www.commentcamarche.net/contents/ccmguide/ccmlicence.php3), de [Jean-François Pillou](https://www.webactus.net/webmarketing/2967-apache2-mot-de-passe-avec-htaccess/webmaster@commentcamarche.net) et Douglas Six trouvée sur « [Comment ça marche](http://www.commentcamarche.net/)« .
@@ -91,8 +89,6 @@ Les mots de passe sont chiffrés. En fait, ils ne sont pas réellement dans le f
 Lors du logon, Apache2 va calculer le code MD5 du mot de passe que vous avez introduit, et le comparer avec le contenu du fichier.
 
 **Le logon, avec Opera (pour changer… il n’y a pas que Firefox sous Linux) :**
-
-[![apache2_logon_htpasswd](http://www.webactus.net/wp-content/uploads/2009/11/apache2_logon_htpasswd.png =376x267)](http://www.webactus.net/wp-content/uploads/2009/11/apache2_logon_htpasswd.png)
 
 Si vous n’êtes pas autorisé à entrer sur ce site (ou si vous tapez un mauvais mot de passe), le site Web redemande le mot de passe, sauf si vous cliquez sur « Annuler ». Vous auriez alors ce message d’erreur (ou celui que vous avez personnalisé !) :
 
