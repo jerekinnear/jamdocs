@@ -28,6 +28,10 @@
         {
           "title": "Première mise à jours",
           "slug": "maj"
+        },
+        {
+          "title": "Deuxième mise à jours",
+          "slug": "maj2"
         }
       ]
     }
