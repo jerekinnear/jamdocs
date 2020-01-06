@@ -5,7 +5,7 @@
       <nav>
         <!-- To use other icons here, you need to import them in the Shortcut component -->
         <Shortcut link="/seo" text="SEO" icon="play-icon" />
-        <Shortcut link="/getting-started" text="GIT-BitBucket" icon="🧰" />
+        <Shortcut link="/getting-started" text="GIT-BitBucket" icon="" />
         <Shortcut link="/theme-configuration" text="CMS" icon="sliders-icon" />
         <Shortcut link="/getting-started" text="Hébérgement" icon="eye-icon" />
         <Shortcut link="/getting-started" text="Techno" icon="eye-icon" />
