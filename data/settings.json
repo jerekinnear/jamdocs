@@ -12,14 +12,7 @@
     {
       "section": "Configuration 📕",
       "topics": [
-        {
-          "title": "Theme configuration",
-          "slug": "theme-configuration"
-        },
-        {
-          "title": "Forestry CMS",
-          "slug": "forestry-cms"
-        }
+
       ]
     },
     {
@@ -28,14 +21,6 @@
         {
           "title": "Le Seo",
           "slug": "seo"
-        },
-        {
-          "title": "Première mise à jours",
-          "slug": "maj"
-        },
-        {
-          "title": "Deuxième mise à jours",
-          "slug": "maj2"
         }
       ]
     }
