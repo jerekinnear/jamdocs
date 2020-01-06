@@ -18,7 +18,7 @@ Le référencement est donc une science particulière dans le sens où son utili
 
 A noter que le référencement naturel n’est pas seulement le fait d’être référencé (dans le sens classé ou indexé) au sein des résultats, ceci étant purement un tic de langage.
 
-## Importance
+## Importance 🎁
 
 D’un point de vue général, une stratégie de référencement agit sur le trafic naturel, c’est-à-dire le trafic provenant des résultats naturels et non-sponsorisés des moteurs de recherche (voir illustration).
 
