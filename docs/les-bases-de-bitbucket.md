@@ -5,7 +5,7 @@ date: 2020-01-03
 slug: bitbucket
 
 ---
-**Créer un repository sur Bitbucket**![](https://lh4.googleusercontent.com/idMhKaSiLT1lUSfXL3e_JDK_fo_l08CU70lVMK_ccJluD6S_wNqL2MblrqppduVwjvg35u95zx4WWxb_FOwq8fG0oyNGkrNkb86QR3pDq-bIL8dDYn_3KPHSCHOFSgGjZf__fi8 =30x29)
+## **Créer un repository sur Bitbucket**![](https://lh4.googleusercontent.com/idMhKaSiLT1lUSfXL3e_JDK_fo_l08CU70lVMK_ccJluD6S_wNqL2MblrqppduVwjvg35u95zx4WWxb_FOwq8fG0oyNGkrNkb86QR3pDq-bIL8dDYn_3KPHSCHOFSgGjZf__fi8 =30x29)
 
 1️⃣ Dans Bitbucket, cliquer sur l’onglet « create » ![](https://docs.google.com/drawings/u/0/d/s5R9K24rBuG8kxkBqMM43zQ/image?w=461&h=339&rev=1&ac=1&parent=1zyZME-5Xv7Jo-bwoLICPzKyH3aDyImoe =461x339)
 
