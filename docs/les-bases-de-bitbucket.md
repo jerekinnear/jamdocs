@@ -7,129 +7,105 @@ slug: bitbucket
 ---
 ## **Créer un repository sur Bitbucket**![](https://lh4.googleusercontent.com/idMhKaSiLT1lUSfXL3e_JDK_fo_l08CU70lVMK_ccJluD6S_wNqL2MblrqppduVwjvg35u95zx4WWxb_FOwq8fG0oyNGkrNkb86QR3pDq-bIL8dDYn_3KPHSCHOFSgGjZf__fi8 =30x29)
 
-1️⃣ Dans Bitbucket, cliquer sur l’onglet « create » ![](https://docs.google.com/drawings/u/0/d/s5R9K24rBuG8kxkBqMM43zQ/image?w=461&h=339&rev=1&ac=1&parent=1zyZME-5Xv7Jo-bwoLICPzKyH3aDyImoe =461x339)
+Si vous voulez restreindre l’accès à certaines parties de vos sites Web en forçant un logon (mot de passe), c’est possible avec [Apache2](http://fr.wikipedia.org/wiki/Apache_HTTP_Server) en créant **un fichier .htaccess et un fichier contenant les utilisateurs autorisés et leurs mots de passe**.
 
-2️⃣ Puis cliquer sur sur l’onglet « Repository »
+[![Logo Serveur Apache](http://www.webactus.net/wp-content/uploads/2009/06/apache_logo.png =200x178)](http://www.webactus.net/wp-content/uploads/2009/06/apache_logo.png)
 
-  
-![](https://docs.google.com/drawings/u/0/d/shsRVSO4R71pH12ydlPdGvA/image?w=413&h=278&rev=1&ac=1&parent=1zyZME-5Xv7Jo-bwoLICPzKyH3aDyImoe =413x278)
+**Les fichiers .htaccess permettent plein de choses. Je ne m’intéresse ici qu’au contrôle d’accès à un dossier. Je vais définir dans .htaccess l’accès par un mot de passe.**
 
-3️⃣ **Ajouter les informations du nouveau répertoire** ![](https://docs.google.com/drawings/u/0/d/skU5ZCD5lQ0rh0Z1OYi_oeg/image?w=567&h=432&rev=1&ac=1&parent=1zyZME-5Xv7Jo-bwoLICPzKyH3aDyImoe =567x432)
+Je me base sur le document « [Apache – Les fichiers .htaccess](http://www.commentcamarche.net/contents/apache/apacht.php3) » en licence [Creative Commons](http://www.commentcamarche.net/contents/ccmguide/ccmlicence.php3), de [Jean-François Pillou](https://www.webactus.net/webmarketing/2967-apache2-mot-de-passe-avec-htaccess/webmaster@commentcamarche.net) et Douglas Six trouvée sur « [Comment ça marche](http://www.commentcamarche.net/)« .
 
-# **Ajouter un projet existant au repository vierge**
+**Je veux restreindre l’accès à mes statistiques** [**Munin**](http://fr.wikipedia.org/wiki/Munin_%28Surveillance_syst%C3%A8me_et_r%C3%A9seau%29)**, et forcer un logon.**
 
-**ATTENTION : Ne pas faire ceci sur des dossiers en production**
+**Je dois créer un fichier .htaccess qui contiendra l’indication qu’il faut un logon, et l’endroit où se trouve le fichier de mot de passe, et ensuite, créer ce fichier avec la liste des utilisateurs autorisés et leurs mots de passe.**
 
-Se rendre à la racine du projet
+**Le fichier .htaccess doit se trouver dans le dossier Web concerné**, donc ici dans mon dossier Munin (adaptez en fonction de votre configuration et de vos dossiers).
 
-Créer le fichier ._gitignore_ (._idea_, _vendor_, _node_modules_, _cache_, _uploads,_ _etc_.). Des ._gitignore_ de base se trouvent facilement dans la documentation des outils ou sur le web.
+    $ cd /var/www/munin
 
-Initialiser git :
+Voici son contenu :
 
-git init
+    #ErrorDocument 403 http ://www.misson.net/accesrefuse.php3
+    AuthUserFile /home/didier/sites-htpasswd/munin
+    AuthGroupFile /dev/null
+    AuthName "Restricted Access (Didier Misson)"
+    AuthType Basic
+    <LIMIT GET POST>
+    
+    Require valid-user
+    </LIMIT>
 
-![](https://lh4.googleusercontent.com/zCaQ5GHuLyilNTq9AjfcgvK9CTcRH4cy1PUnftMY2jJb7nRrseHvj013tQrkkOFo_m2gU3pJR9qHaKi1nYvhKxi0c6F-8KUI4rhOVLg39g9bBa2ymk4iD7j0ahCVi6NWBVBhAT8 =439x42)
+La première ligne, en commentaire dans mon cas, vous permet éventuellement de personnaliser votre message d’erreur en cas d’erreur d’accès.
 
-Créer le lien avec le repository git :
+La ligne « AuthName » contient le texte qui sera affiché dans la fenêtre de logon.
 
-Ces infos se trouvent sur le repo vierge dans bitbucket :
+Le « Require valid-user » précise qu’il faut obligatoirement un user valide … et son mot de passe !
 
-![](https://lh5.googleusercontent.com/58DApNq0H1418NejBIFN5npZsS-P-nuvTk3sfhSLBssH_1gspRw7nsg9BY8Ryrlgg-M8yN586IuNmarpzhi6zJ41q3Xp2ia5GR7Bu9v-NYefFF-lyQ-sPMSiDRW1lgIFn04dX6Q =605x611)
+**Il faut indiquer où se trouve cette liste d’utilisateur autorisé.**
 
-git remote add origin <lien du repo>
+Si vous avez un hébergement chez un fournisseur, vous n’avez peut-être pas le choix de l’endroit ! Vous serez probablement obligé de laisser cette liste de mots de passe dans votre dossier web. Dans ce cas, vous pourriez simplement l’appeler « .htpasswd ».
 
-![](https://lh3.googleusercontent.com/xKGJ4Qoyob8Y2t5_pQ3JrPWYCZH49ls5vR65hDVx6WTzw2Ln2yUWfVdiNWD7tHJsN4iDFq0Z8IHnRzieSp-iMM20eejTmzlcoFYaRJpuuWPjgwsYJVuFHa-YWA_QX5_eypZn-2o =605x26)
+Si vous avez votre propre serveur à la maison, ou un serveur dédié, il est préférable de ne pas mettre le fichier mots de passe dans le dossier Web.
 
-Ajouter les fichiers au git
+Je me suis créé un dossier /home/didier/sites-htpasswd où je mets les différents fichiers mots de passe pour Apache.
 
-git add .
+**Création du fichier mots de passe et ajout d’utilisateurs.**
 
-![](https://lh4.googleusercontent.com/DSNgZxbHIdP54Sa20SQOB8oHCtHKHEFDqFTT7DAFylbww4nzcKFA5JEK_KXOPCuKhZIbgGOvt3DqV3fwp4JVTwGkV701bAvk7trbo5gPPX3f4x_rv_O19TLWgPZWDtKUhj9R6P8 =222x25)
+Je vais donc dans mon dossier /home/didier/sites-htpasswd :
 
-Commit les fichiers
+    $ cd /home/didier/sites-htpasswd/
 
-git commit -m « first commit »
+La configuration de base d’Apache suppose que les mots de passe sont codés en [MD5](http://fr.wikipedia.org/wiki/Md5).
 
-![](https://lh5.googleusercontent.com/ecclKWkDI1WSQvxMDULOVK8tE4b6fBeMYLiWKsC49EbeTktx4CDiATo5G829rckdBMTgTo-hiIWEXqEPr-YwCtv2-IEX-nF8NUlv2OZFWRksV9rG_u82cN6oxqeY7C6JhrMnFOw =502x112)
+**Une commande est prévue pour créer ce fichier : « htpasswd »**
 
-Pousser le commit sur le repo en ligne
+Le flag » -c » permet de créer le fichier mots de passe. Il faut l’utiliser la première fois.
 
-git push -u origin master (ou branche concernée)
+Il faut également préciser le nom du fichier mots de passe, et le userid que vous voulez ajouter :
 
-![](https://lh6.googleusercontent.com/GGhtDpF-1H331rhiElwGcd5765XR6mXCrMI7KM-xzdqp-qfj6YAkbq7K4aORWwlFShJ61vLC0cTj0EO8eNNEmuMv3XqVZ09tJvN8X2-igYuy-kf2RBzx_a438-cHpx5CI0dMT-U =564x213)
+     :/home/didier/sites-htpasswd$ htpasswd -c munin didier
+    New password :
+    Re-type new password :
+    Adding password for user didier
 
-# **Cloner un repo**
+Pour les utilisateurs suivants, il ne faut plus mettre le » -c » :
 
-## En local
+     :/home/didier/sites-htpasswd$ htpasswd munin maurice
+    New password :
+    Re-type new password :
+    Adding password for user maurice
+     :/home/didier/sites-htpasswd$ htpasswd munin kevin
+    New password :
+    Re-type new password :
+    Adding password for user kevin
 
-git clone https://<username>@<url>
+**Que contient le fichier généré ?**
 
-Ici on met le username pour faire le lien avec l’utilisateur qui fait les modifs (donc le votre)
+     :/home/didier/sites-htpasswd$ cat munin
+    didier :5jOSjJmQhKrng
+    maurice :DQbxW83DfGtUw
+    kevin :bpghOeADgxX.U
 
-## En ligne
+Les mots de passe sont chiffrés. En fait, ils ne sont pas réellement dans le fichier, mais c’est leur signature MD5 qui est sauvée.
 
-git clone https://<url>
+Lors du logon, Apache2 va calculer le code MD5 du mot de passe que vous avez introduit, et le comparer avec le contenu du fichier.
 
-Ici on ne met **pas** le username car on ne doit pas lier à l’utilisateur. L’utilisateur qui clone ne doit pas être le seul à pouvoir faire des pull sur le serveur.
+**Le logon, avec Opera (pour changer… il n’y a pas que Firefox sous Linux) :**
 
-# **Modifier un remote**
+[![apache2_logon_htpasswd](http://www.webactus.net/wp-content/uploads/2009/11/apache2_logon_htpasswd.png =376x267)](http://www.webactus.net/wp-content/uploads/2009/11/apache2_logon_htpasswd.png)
 
-Si le remote est faux (par exemple l’utilisateur a été défini dans l’url de remote comme ci-dessous)
+Si vous n’êtes pas autorisé à entrer sur ce site (ou si vous tapez un mauvais mot de passe), le site Web redemande le mot de passe, sauf si vous cliquez sur « Annuler ». Vous auriez alors ce message d’erreur (ou celui que vous avez personnalisé !) :
 
-![](https://lh6.googleusercontent.com/viZA0J48XlzcSR_wHAicangr6Z05E6Dg_d26SQr46jni-XX3l-auQ83nhKoPXTMNKzhOVwC0O-jK1acB1FnQTgtpZPMJikiHzkANVWrf_qFu_pmsNf5nqdbONnX19pBT_Y9B9NI =605x55)
+**_Authorization Required_**
 
-git remote set-url <name>
+**_This server could not verify that you are authorized to access the document requested. Either you supplied the wrong credentials (e.g., bad password), or your browser doesn’t understand how to supply the credentials required._**
 
-![](https://lh6.googleusercontent.com/_x76vG1btScuCap6JXa1qXewoGMAb2HWtpl1hkiBpq8N-BAje_PST-326dtnwT0jlLbF-V5rOIuT-yUHELvooMP6ij5pa6mVp-lCRwNjcz312CC1qiuUq2ad7_cH9MyysJpQpV4 =605x25)
+**Si vous devez supprimer un utilisateur de la liste des personnes autorisées**, évidemment vous pourriez éditer le fichier et supprimer la ligne de cet utilisateur. Mais c’est possible aussi avec la commande « htpasswd » :
 
-Vérifier le changement
+     :/home/didier/sites-htpasswd$ htpasswd -D munin maurice
+    Deleting password for user maurice
+     :/home/didier/sites-htpasswd$ cat munin
+    didier :5jOSjJmQhKrng
+    kevin :bpghOeADgxX.U
 
-![](https://lh5.googleusercontent.com/pllYTXus5bFxYhvMkc2UxAwQ8BuhWpCjoNpLjCLAVeEdN9mTwwb6d_0pr4u6DvjPQcBU3SdgeRCcyK13dk4z8fL0QE78NT6nNpZyJ2BRhBCWfHpDuk8ihjgYc8KCKn7vRc3hgfg =593x60)
-
-# **Changer de branche**
-
-Effectuer un pull pour avoir la référence de la branche :
-
-git pull
-
-Effectuer le checkout pour changer de branche
-
-git checkout <branch>
-
-![](https://lh6.googleusercontent.com/HqkZe2CBmeUvHRopLs5mi5KekO2pDyWYLyTAJqq1_7T_i1SbksKdS2q7xgPzKldPIwh6D28w0uloqM9aTtsgRcbYkkLqpv9Vcr7VoNtkDcoQ-lWPkfI_KjTi_GliHybNKuR4paE =605x47)
-
-![](https://lh4.googleusercontent.com/RsVra0EHks-At71rhv4x1iNxEuCjw0YyfhCbhq_m70SnKGbkfCbqilZLg5JLNz1x7K5ZjnEH1Gxsray49gJSSV5Ir7vs46wrPYlF18sx8N1Kel65WZ3j8XNV1J9eYSETzE7xlFY =414x61)
-
-# **Résoudre des conflits**
-
-Tout d’abord il est important de dire que les changements ne doivent pas être effectués directement sur un serveur de prod.
-
-Si vraiment, les modifications doivent être commit depuis le serveur afin que les développeurs puissent au moins les récupérer en local.
-
-Règle n°2, toujours faire un _pull_ lorsque l’on commence à travailler sur un projet afin d’être sur d’être à jour.
-
-Si toutefois le repo git sur le serveur met ce genre d’erreur :
-
-![](https://lh3.googleusercontent.com/t-8ain0duHlFs__19npVru2q2fW0thqvN-k9Abt-iTBEVkX5m_6LmKUSgL38fjlRx8J9iY-cNv38zPgcpthOXVoI9jsKWmrFQUKHlbTKy-V5ZoTnLcko5HmXxzCJ3gNus9artO8 =605x227)
-
-On peut :
-
-1. Considérer que la personne qui a modifié des données directement sur le serveur mérite qu’on regarde ce qu’elle a fait malgré les avertissements au début du présent chapitre.
-
-Dans ce cas, la commande git diff permet de voir le travail effectué. L’idéal est de répercuter les modifications en local et créer un nouveau commit. Puis effectuer la même action qu’au point 2.
-
-![](https://lh4.googleusercontent.com/GhGvR_FjSAJHBUjdoAsB7PZMEfu4z6Ga5RGIdBchX1pIdjjujO1tA1ypLg5g6F09vCwLnUc0Q4ypUU4Flq8GNKUMnmPPLNpBp52Wq1g4acnyxdnrfkAJF3QsHlwwFw2pGI4hr2k =393x305)
-
-2. Considérer que la personne qui a modifié le code directement sur le serveur pourra recommencer.
-
-Afin de récupérer le code présent sur git et uniquement celui là.
-
-git reset –hard
-
-Cette commande permet de revenir au dernier commit.
-
-![](https://lh4.googleusercontent.com/VKDYDVGyi4hoYZPkdaY0EwzWk0vPUFSFpsekzEB0uWmK4wS7UBgWzWi4KIfr40eP0USVyY2rqtT3uiY6xujeMBUeMowRWc-fOFbzgwGVYWzBJNDjArqAKyFZF54sRgGv1JOvXqE =499x40)
-
-Puis git pull permet de récupérer les dernières modifications du repo.
-
-![](https://lh4.googleusercontent.com/fFjD63ci0j5W1V7w8JStabd2i5AJun3cgYB9WP-Pz60q1FTurUAuEs-Yd0HqXopLIdVoWe2i20OO_efS3B14BYejt8yZ2jptx4Y5gk3GH5kbsJDZrt6TtS4vSqwITJgqcCUHZ1Q =497x174)
+**Voilà, l’utilisateur « maurice » est supprimé.**
