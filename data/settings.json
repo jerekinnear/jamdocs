@@ -21,6 +21,15 @@
           "slug": "forestry-cms"
         }
       ]
+    },
+    {
+      "section": "Exploitation",
+      "topics": [
+        {
+          "title": "Première mise à jours",
+          "slug": "maj"
+        }
+      ]
     }
   ]
 }
