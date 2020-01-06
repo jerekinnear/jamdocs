@@ -26,6 +26,10 @@
       "section": "Exploitation 📘",
       "topics": [
         {
+          "title": "Le Seo",
+          "slug": "seo"
+        },
+        {
           "title": "Première mise à jours",
           "slug": "maj"
         },
