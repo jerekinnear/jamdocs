@@ -14,5 +14,9 @@ fields:
 - type: text
   name: slug
   label: slug
+- name: categorie
+  type: tag_list
+  default: []
+  label: Catégorie
 pages:
 - docs/le-seo.md
