@@ -1,11 +1,11 @@
 ---
-title: Le SEO
+title: Le SEO, C’est quoi ?
 date: 2020-01-04
 slug: seo
 categorie: []
 
 ---
-# Le SEO, C’est quoi ?
+## Principe et guide
 
 Au premier abord, le SEO n’est pas quelque chose de facile à comprendre. En effet, lors d’entretiens téléphoniques ou écrits, j’ai pu constater qu’un grand nombre de personnes n’avait jamais entendu parler de cet art auparavant. C’est pour cette raison que je vous propose de faire un petit tour rapide sur ce qu’est le SEO, tout en vous expliquant son utilité, son fonctionnement et ses risques au sein d’un projet.
 
